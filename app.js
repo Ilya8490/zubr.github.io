@@ -1,53 +1,69 @@
-document.addEventListener('DOMContentLoaded', () => {
+// app.js
+
+document.addEventListener('DOMContentLoaded', function() {
     const taskForm = document.getElementById('task-form');
     const taskInput = document.getElementById('task-input');
     const taskList = document.getElementById('task-list');
 
     // Load tasks from localStorage
-    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    loadTasks();
 
-    // Render tasks
-    const renderTasks = () => {
-        taskList.innerHTML = '';
-        tasks.forEach((task, index) => {
-            const li = document.createElement('li');
-            li.className = task.completed ? 'completed' : '';
-            li.innerHTML = `
-                <span>${task.text}</span>
-                <div>
-                    <button class="complete">${task.completed ? 'Undo' : 'Complete'}</button>
-                    <button class="delete">Delete</button>
-                </div>
-            `;
-            // Mark task as completed
-            li.querySelector('.complete').addEventListener('click', () => {
-                tasks[index].completed = !tasks[index].completed;
-                localStorage.setItem('tasks', JSON.stringify(tasks));
-                renderTasks();
-            });
-            // Delete task
-            li.querySelector('.delete').addEventListener('click', () => {
-                tasks.splice(index, 1);
-                localStorage.setItem('tasks', JSON.stringify(tasks));
-                renderTasks();
-            });
-            taskList.appendChild(li);
-        });
-    };
-
-    // Add new task
-    taskForm.addEventListener('submit', (e) => {
+    // Add task
+    taskForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const newTask = {
-            text: taskInput.value,
-            completed: false
-        };
-        tasks.push(newTask);
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        addTask(taskInput.value);
         taskInput.value = '';
-        renderTasks();
     });
 
-    // Initial render
-    renderTasks();
+    // Load tasks
+    function loadTasks() {
+        const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+        tasks.forEach(task => {
+            const taskItem = createTaskItem(task.text, task.completed);
+            taskList.appendChild(taskItem);
+        });
+    }
+
+    // Save tasks to localStorage
+    function saveTasks() {
+        const tasks = [];
+        taskList.querySelectorAll('li').forEach(item => {
+            tasks.push({
+                text: item.querySelector('span').textContent,
+                completed: item.classList.contains('completed')
+            });
+        });
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+
+    // Create task item
+    function createTaskItem(text, completed = false) {
+        const li = document.createElement('li');
+        li.className = completed ? 'completed' : '';
+        const span = document.createElement('span');
+        span.textContent = text;
+        li.appendChild(span);
+
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.addEventListener('click', function() {
+            li.remove();
+            saveTasks();
+        });
+        li.appendChild(deleteButton);
+
+        li.addEventListener('click', function() {
+            li.classList.toggle('completed');
+            saveTasks();
+        });
+
+        return li;
+    }
+
+    // Add task to list
+    function addTask(text) {
+        const taskItem = createTaskItem(text);
+        taskList.appendChild(taskItem);
+        saveTasks();
+    }
 });
