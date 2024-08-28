@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return li;
     }
 
-    // Add task to list
+    
     function addTask(text) {
         const taskItem = createTaskItem(text);
         taskList.appendChild(taskItem);
