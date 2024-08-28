@@ -1,50 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToDo List</title>
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PJMMWJVG');</script>
-    <!-- End Google Tag Manager -->
-
-</head>
-<body>
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJMMWJVG"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
-    <!-- Header with Links -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="plan.html" target="_blank">Plan a Day</a></li>
-                <li><a href="about.html" target="_blank">About</a></li>
-                <li><a href="contacts.html" target="_blank">Contacts</a></li>
-            </ul>
-        </nav>
-        <button id="theme-toggle">Switch to Night Mode</button>
-    </header>
-
-    <!-- To-Do List Section -->
-    <div class="container">
-        <h1>To-Do List</h1>
-        <form id="task-form">
-            <input type="text" id="task-input" placeholder="Add a new task" required>
-            <button type="submit">Add Task</button>
-        </form>
-        <ul id="task-list"></ul>
-    </div>
-
-    <script src="app.js"></script>
-    <script src="theme.js"></script>
-</body>
-</html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ToDo List</title>
+        <link rel="stylesheet" href="styles.css">
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-PJMMWJVG');</script>
+        <!-- End Google Tag Manager -->
+    </head>
+    <body>
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJMMWJVG"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+    
+        <!-- Header with Links -->
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="plan.html" target="_blank">Plan a Day</a></li>
+                    <li><a href="about.html" target="_blank">About</a></li>
+                    <li><a href="contacts.html" target="_blank">Contacts</a></li>
+                </ul>
+            </nav>
+            <button id="theme-toggle" class="btn btn-primary">Switch to Night Mode</button>
+        </header>
+    
+        <!-- To-Do List Section -->
+        <div class="container">
+            <h1>To-Do List</h1>
+            <form id="task-form">
+                <input type="text" id="task-input" placeholder="Add a new task" required>
+                <button type="submit" class="btn btn-success">Add Task</button>
+            </form>
+            <ul id="task-list"></ul>
+        </div>
+    
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h5>Follow Us</h5>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-facebook-f"></i> Facebook</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-twitter"></i> Twitter</a>
+                        <a href="#" class="btn btn-outline-light btn-sm"><i class="fab fa-instagram"></i> Instagram</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Quick Links</h5>
+                        <a href="plan.html" class="text-white">Plan a Day</a> | 
+                        <a href="about.html" class="text-white">About</a> | 
+                        <a href="contacts.html" class="text-white">Contacts</a>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>&copy; 2024 ToDo List</h5>
+                        <a href="#" class="text-white">Back to Top</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    
+        <script src="app.js"></script>
+        <script src="theme.js"></script>
+    
+        <!-- Font Awesome for social icons -->
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    
+        <!-- Bootstrap JS and dependencies -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+    </html>

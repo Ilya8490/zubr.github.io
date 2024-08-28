@@ -63,3 +63,14 @@ header.night-mode {
 nav ul li a.night-mode {
     color: #e0e0e0;
 }
+
+/* Footer Styles */
+footer a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
